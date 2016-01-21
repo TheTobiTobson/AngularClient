@@ -1,6 +1,37 @@
-﻿<h1>designer</h1>
-<p>Welcome to the Designer page</p>
-<p><a href="#/startpage">startpage</a></p>
+﻿<p><a href="#/startpage">startpage</a></p>
 <p><a href="#/about">about</a></p>
 
-Hallo. Das ist die Designer page!
+
+    <md-content class="md-padding" layout="row" layout-wrap layout-align="center start" layout-xs="column">
+       
+        <div flex="50" flex-xs="100" layout="column">
+            <md-card>
+                <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Icon action buttons</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <p>
+                        <md-radio-group ng-model="RadioAnswers">
+                            <md-radio-button value="Apple">Apple</md-radio-button>
+                            <md-radio-button value="Banana"> Banana </md-radio-button>
+                            <md-radio-button value="Mango">Mango</md-radio-button>
+                        </md-radio-group>    
+                    </p>
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button class="md-icon-button" aria-label="Favorite">
+                        <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Settings">
+                        <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Share">
+                        <md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>
+                    </md-button>
+                </md-card-actions>
+            </md-card>            
+        </div>
+    </md-content>

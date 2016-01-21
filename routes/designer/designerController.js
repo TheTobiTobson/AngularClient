@@ -7,5 +7,6 @@ angular.module('designerModule')
     ['$scope',
         function ($scope) {
             $scope.$log.log('designerModule       - designerController   - .controller          - Entered');
+            $scope.imagePath = 'images/stift.jpg';
         }]);
 

@@ -7,6 +7,7 @@ angular.module('designerModule', []);
 
 angular.module('feedMeMainApp', [
     'ngRoute',
+    'ngMaterial',
     'startpageModule',
     'aboutModule',
     'designerModule'
