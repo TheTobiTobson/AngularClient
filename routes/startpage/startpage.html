@@ -3,4 +3,31 @@
 <p><a href="#/about">about</a></p>
 <p><a href="#/designer">designer</a></p>
 
-Hallo. Das ist die Startpage!
+<h2>Login</h2>
+<md-input-container>
+    <label>Email</label>
+    <input type="text" ng-model="email_login" required md-maxlength="10">
+</md-input-container>
+
+<md-input-container>
+    <label>Password</label>
+    <input type="text" ng-model="password_login" required md-maxlength="10">
+</md-input-container>
+
+<h2>Registrieren</h2>
+<md-input-container>
+    <label>Email</label>
+    <input type="text" ng-model="email_register" required md-maxlength="10">
+</md-input-container>
+
+<md-input-container>
+    <label>Password</label>
+    <input type="text" ng-model="password_register" required md-maxlength="10">
+</md-input-container>
+
+<h2>API calls</h2>
+<md-button class="md-raised" ng-click="getOneQuestion()">Unprotected</md-button>
+<md-button class="md-raised" ng-click="clearResults()">Clear</md-button>
+
+<h2>Data</h2>
+{{Question}}
