@@ -2,10 +2,14 @@
 
 // module declaration
 angular.module('startpageModule', []);
+angular.module('aboutModule', []);
+angular.module('designerModule', []);
 
 angular.module('feedMeMainApp', [
     'ngRoute',
-    'startpageModule'
+    'startpageModule',
+    'aboutModule',
+    'designerModule'
 ])
 
 
@@ -17,16 +21,25 @@ angular.module('feedMeMainApp', [
             templateUrl: 'routes/startpage/startpage.html'
         })
 
-        //.when('/account', {
-        //    controller: 'AccountController',
-        //    templateUrl: 'modules/account/views/account.html'
-        //})
+        .when('/about', {
+            controller: 'aboutController',
+            templateUrl: 'routes/about/about.html'
+        })
 
-
-        //.when('/', {
-        //    controller: 'HomeController',
-        //    templateUrl: 'modules/home/views/home.html'
-        //})
+        .when('/designer', {
+            controller: 'designerController',
+            templateUrl: 'routes/designer/designer.html'
+        })
 
         .otherwise({ redirectTo: '/startpage' });
 }])
+
+
+.run(['$rootScope', '$log',
+    function ($rootScope, $log) {
+
+        //Putting $log to $rootscope to give access  from all parts of the app//
+        $rootScope.$log = $log;
+        $rootScope.$log.log('Modul: feedMeMainApp - .run - Entered');
+      
+    }]);

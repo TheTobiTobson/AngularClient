@@ -6,7 +6,6 @@ angular.module('startpageModule')
 .controller('startpageController',
     ['$scope',
         function ($scope) {
-            //$scope.$log.log('Modul: Authentication - .controller - Entered');
-            alert('hi');
+            $scope.$log.log('startpageModule      - startpageController  - .controller          - Entered');
     }]);
 
