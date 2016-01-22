@@ -1,6 +1,12 @@
 ﻿body {
 }
 
-.apiresponse{
+.borderBlack{
     border:1px solid black;
+}
+
+.pagediv{
+    max-width:1500px; 
+    margin-left: auto; 
+    margin-right: auto;
 }

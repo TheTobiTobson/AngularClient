@@ -29,6 +29,7 @@ angular.module('startpageModule')
                 $scope.Question = "";
             }
 
+            // Call API for data//
             $scope.getOneQuestion = function () {                             
                 ComServiceFactory.getQuestions()
                         .then(function successCallback(response) {
@@ -42,9 +43,21 @@ angular.module('startpageModule')
                             $scope.$log.log('startpageModule      - startpageController \n '
                             + '> ComService.getQuestions().error \n '
                             + '> status: ' + response.status);
-                   })
-                
+                   })                
             }
+
+            //Send Credentials for Login
+            $scope.sendCredentialsToLogin = function () {
+                ComServiceFactory.sendCredentials($scope.loginCredentials)
+                    .then(function successCallback(response) {
+                        $scope.$log.log('SUCCESS');
+                       
+                    }, function errorCallback(response) {
+                        $scope.$log.log('ERROR');
+                    })
+            }
+
+
         }
     ]);
 

@@ -1,37 +1,82 @@
-﻿<p><a href="#/startpage">startpage</a></p>
-<p><a href="#/about">about</a></p>
+﻿<div class="pagediv">
+    
+    <h1>Designer</h1>
+    <p>Welcome to the Designer</p>
+    <p><a href="#/startpage">startpage</a></p>
+    <p><a href="#/about">about</a></p>
 
+    <h2>API calls</h2>
+    <md-button class="md-raised" ng-click="getOneQuestion()">CallUnprotectedAPI</md-button>
 
-    <md-content class="md-padding" layout="row" layout-wrap layout-align="center start" layout-xs="column">
-       
-        <div flex="50" flex-xs="100" layout="column">
-            <md-card>
-                <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
-                <md-card-title>
-                    <md-card-title-text>
-                        <span class="md-headline">Icon action buttons</span>
-                    </md-card-title-text>
-                </md-card-title>
-                <md-card-content>
-                    <p>
-                        <md-radio-group ng-model="RadioAnswers">
-                            <md-radio-button value="Apple">Apple</md-radio-button>
-                            <md-radio-button value="Banana"> Banana </md-radio-button>
-                            <md-radio-button value="Mango">Mango</md-radio-button>
-                        </md-radio-group>    
-                    </p>
-                </md-card-content>
-                <md-card-actions layout="row" layout-align="end center">
-                    <md-button class="md-icon-button" aria-label="Favorite">
-                        <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
-                    </md-button>
-                    <md-button class="md-icon-button" aria-label="Settings">
-                        <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
-                    </md-button>
-                    <md-button class="md-icon-button" aria-label="Share">
-                        <md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>
-                    </md-button>
-                </md-card-actions>
-            </md-card>            
-        </div>
-    </md-content>
+    <!--Layout Container Input Form-->
+    <div layout="row">
+        <md-content class="borderBlack">
+            <form name="designerForm">
+                <!--Row one-->
+                <div>
+                    <md-input-container flex-gt-sm="row">
+                        <label>QUE_id</label>
+                        <input type="number" min="0" required name="QUE_id" ng-model="Question[0].QUE_id">
+                        <div ng-messages="designerForm.QUE_id.$error">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container flex-gt-sm="row">
+                        <label>QUE_FBS_id</label>
+                        <input type="number" min="0" required name="QUE_FBS_id" ng-model="Question[0].QUE_FBS_id">
+                        <div ng-messages="designerForm.QUE_FBS_id.$error">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container flex-gt-sm="row">
+                        <label>QUE_position</label>
+                        <input type="number" min="0" required name="QUE_position" ng-model="Question[0].QUE_position">
+                        <div ng-messages="designerForm.QUE_position.$error">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container flex-gt-sm="row">
+                        <label>QUE_type</label>
+                        <md-select ng-model="Question[0].QUE_type">
+                            <md-option ng-repeat="x in questionTypes">{{x}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <!--Row two-->
+                <div>
+                    <md-input-container flex-gt-sm="row">
+                        <label>QUE_answerRadioButton</label>
+                        <input md-maxlength="30" required name="QUE_answerRadioButton" ng-model="Question[0].QUE_answerRadioButton">
+                        <div ng-messages="designerForm.QUE_answerRadioButton.$error">
+                            <div ng-message="required">This is required.</div>
+                            <div ng-message="md-maxlength">QUE_answerRadioButton has to be less than 30 characters long.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container flex-gt-sm="row">
+                        <label>QUE_title</label>
+                        <input md-maxlength="30" required name="QUE_title" ng-model="Question[0].QUE_title">
+                        <div ng-messages="designerForm.QUE_title.$error">
+                            <div ng-message="required">This is required.</div>
+                            <div ng-message="md-maxlength">QUE_title has to be less than 30 characters long.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container flex-gt-sm="row">
+                        <label>QUE_showQuestionInFeedback</label>
+                        <md-select ng-model="Question[0].QUE_showQuestionInFeedback">
+                            <md-option ng-repeat="x in dropdownShowHide">{{x}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div>
+                    <md-input-container class="md-block">
+                        <label>QUE_text</label>
+                        <textarea ng-model="Question[0].QUE_text" columns="1" md-maxlength="300" rows="5"></textarea>
+                    </md-input-container>
+                </div>
+            </form>
+        </md-content>
+    </div>
+    <!--Layout Container Input Form-->
+
+</div>
+<!--End pagediv-->
