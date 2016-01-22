@@ -1,33 +1,48 @@
-﻿<h1>startpage</h1>
-<p>Welcome to the main page</p>
-<p><a href="#/about">about</a></p>
-<p><a href="#/designer">designer</a></p>
+﻿<div style="max-width:1000px; margin-left: auto; margin-right: auto;">
+    <h1>startpage</h1>
+    <p>Welcome to the main page</p>
+    <p><a href="#/about">about</a></p>
+    <p><a href="#/designer">designer</a></p>
 
-<h2>Login</h2>
-<md-input-container>
-    <label>Email</label>
-    <input type="text" ng-model="email_login" required md-maxlength="10">
-</md-input-container>
+    <h2>Login</h2>
+    <md-input-container>
+        <label>Email</label>
+        <input type="text" ng-model="email_login" required md-maxlength="10">
+    </md-input-container>
 
-<md-input-container>
-    <label>Password</label>
-    <input type="text" ng-model="password_login" required md-maxlength="10">
-</md-input-container>
+    <md-input-container>
+        <label>Password</label>
+        <input type="text" ng-model="password_login" required md-maxlength="10">
+    </md-input-container>
 
-<h2>Registrieren</h2>
-<md-input-container>
-    <label>Email</label>
-    <input type="text" ng-model="email_register" required md-maxlength="10">
-</md-input-container>
+    <h2>Registrieren</h2>
+    <md-input-container>
+        <label>Email</label>
+        <input type="text" ng-model="email_register" required md-maxlength="10">
+    </md-input-container>
 
-<md-input-container>
-    <label>Password</label>
-    <input type="text" ng-model="password_register" required md-maxlength="10">
-</md-input-container>
+    <md-input-container>
+        <label>Password</label>
+        <input type="text" ng-model="password_register" required md-maxlength="10">
+    </md-input-container>
 
-<h2>API calls</h2>
-<md-button class="md-raised" ng-click="getOneQuestion()">Unprotected</md-button>
-<md-button class="md-raised" ng-click="clearResults()">Clear</md-button>
+    <h2>API calls</h2>
+    <md-button class="md-raised" ng-click="getOneQuestion()">CallUnprotectedAPI</md-button>
+    <md-button class="md-raised" ng-click="clearResults()">Clear</md-button>
 
-<h2>Data</h2>
-{{Question}}
+    <h2>Data</h2>
+    <!--Layout Container-->
+    <div layout="row">
+        <!--Layout Children-->
+        <div flex="50" class="apiresponse">
+            QUE_id: {{Question.QUE_id}}<br>
+            QUE_FBS_id: {{Question.QUE_FBS_id}}<br>
+            QUE_type: {{Question.QUE_type}}<br>
+            QUE_position: {{Question.QUE_position}}<br>
+            QUE_text: {{Question.QUE_text}}<br>
+            QUE_answerRadioButton: {{Question.QUE_answerRadioButton}}<br>
+            QUE_title: {{Question.QUE_title}}<br>
+            QUE_showQuestionInFeedback: {{Question.QUE_showQuestionInFeedback}}
+        </div>
+    </div>    
+</div>

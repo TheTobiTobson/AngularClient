@@ -2,7 +2,7 @@
 
 angular.module('startpageModule')
 
-.factory('ComService',
+.factory('ComServiceFactory',
     ['$http', '$rootScope',
     function ($http, $rootScope) {
 
@@ -11,8 +11,8 @@ angular.module('startpageModule')
 
         //Get all Questions
         ComService.getQuestions = function () {
-            $rootScope.$log.log('module:Account - factory:ComService - '
-                + 'function:getQuestion \n > $http.get(' + urlFirstPartInclPort
+            $rootScope.$log.log('startpageModule      - ComServiceFactory    - '
+                + 'getQuestion() \n > $http.get(' + urlFirstPartInclPort
                 + '/api/QUE_FeedbackQuestions/2)');
             return $http.get(urlFirstPartInclPort + '/api/QUE_FeedbackQuestions/2');
         };

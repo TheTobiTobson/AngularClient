@@ -4,8 +4,8 @@
 angular.module('startpageModule')
 
 .controller('startpageController',
-    ['$scope', 'ComService',
-        function ($scope, ComService) {
+    ['$scope', 'ComServiceFactory',
+        function ($scope, ComServiceFactory) {
             $scope.$log.log('startpageModule      - startpageController  - .controller          - Entered');
 
 
@@ -30,15 +30,16 @@ angular.module('startpageModule')
             }
 
             $scope.getOneQuestion = function () {                             
-                    ComService.getQuestions()
+                ComServiceFactory.getQuestions()
                         .then(function successCallback(response) {
-                            $scope.$log.log('module:Account - controller:AccountController \n '
+                            $scope.$log.log('startpageModule      - startpageController \n '
                             + '> ComService.getQuestions().success \n '
                             + '> status: ' + response.status);
+                            //Write Response to Scope//
                             $scope.Question = response.data;                           
 
                         }, function errorCallback(response) {
-                            $scope.$log.log('module:Account - controller:AccountController \n '
+                            $scope.$log.log('startpageModule      - startpageController \n '
                             + '> ComService.getQuestions().error \n '
                             + '> status: ' + response.status);
                    })
