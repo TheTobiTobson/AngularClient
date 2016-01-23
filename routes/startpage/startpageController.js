@@ -64,6 +64,7 @@ angular.module('startpageModule')
                     method: 'POST',
                     url: 'http://localhost:54599/Token',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    withCredentials: true, // REMOVE ON PRODUCTION
                     transformRequest: function (credentials) {
                         var str = [];
                         for (var p in credentials)
