@@ -15,8 +15,7 @@ angular.module('feedMeMainApp', [
 ])
 
 
-.config(['$routeProvider', function ($routeProvider) {
-
+.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {    
     $routeProvider
         .when('/startpage', {
             controller: 'startpageController',
@@ -34,6 +33,9 @@ angular.module('feedMeMainApp', [
         })
 
         .otherwise({ redirectTo: '/startpage' });
+
+        //Enable cross domain calls
+        //$httpProvider.defaults.useXDomain = true;
 }])
 
 
