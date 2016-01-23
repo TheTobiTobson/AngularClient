@@ -4,8 +4,8 @@
 angular.module('startpageModule')
 
 .controller('startpageController',
-    ['$scope', 'ComServiceFactory',
-        function ($scope, ComServiceFactory) {
+    ['$scope','$http', 
+        function ($scope, $http) {
             $scope.$log.log('startpageModule      - startpageController  - .controller          - Entered');
 
 
@@ -29,34 +29,61 @@ angular.module('startpageModule')
                 $scope.Question = "";
             }
 
-            // Call API for data//
-            $scope.getOneQuestion = function () {                             
-                ComServiceFactory.getQuestions()
-                        .then(function successCallback(response) {
-                            $scope.$log.log('startpageModule      - startpageController \n '
-                            + '> ComService.getQuestions().success \n '
-                            + '> status: ' + response.status);
-                            //Write Response to Scope//
-                            $scope.Question = response.data;                           
 
-                        }, function errorCallback(response) {
-                            $scope.$log.log('startpageModule      - startpageController \n '
-                            + '> ComService.getQuestions().error \n '
-                            + '> status: ' + response.status);
-                   })                
-            }
+           // GET Questions
+            $scope.getOneQuestion = function () {
+                $http({
+                    method: 'GET',
+                    url: 'http://localhost:54599/api/QUE_FeedbackQuestions/2'
+                }).then(function successCallback(response) {
+                    $scope.$log.log('startpageModule      - startpageController \n '
+                        + '> getOneQuestion().success \n '
+                        + '> status: ' + response.status);
+                        //Write Response to Scope//
+                        $scope.Question = response.data;
+                }, function errorCallback(response) {
+                    $scope.$log.log('startpageModule      - startpageController \n '
+                        + '> getOneQuestion().error \n '
+                        + '> status: ' + response.status);
+                });
+            };
+                      
 
-            //Send Credentials for Login
-            $scope.sendCredentialsToLogin = function () {
-                ComServiceFactory.sendCredentials($scope.loginCredentials)
-                    .then(function successCallback(response) {
-                        $scope.$log.log('SUCCESS');
-                       
-                    }, function errorCallback(response) {
-                        $scope.$log.log('ERROR');
-                    })
-            }
+            // POST Credentials
+            $scope.sendCredentials = function () {
 
+                /////VERSION 1 //////
+                //$http({
+                //    method: 'POST',
+                //    url: 'http://localhost:54599/Token',
+                //    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                //    data: { username: $scope.loginCredentials.email, password: $scope.loginCredentials.password }
+                //})
+            /////VERSION 2 ////
+                $http({
+                    method: 'POST',
+                    url: 'http://localhost:54599/Token',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    transformRequest: function (credentials) {
+                        var str = [];
+                        for (var p in credentials)
+                            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(credentials[p]));                       
+                        return 'grant_type=password&' + str.join("&");
+
+                    },
+                    data: $scope.loginCredentials
+                }).then(function successCallback(response) {
+                    $scope.$log.log('startpageModule      - startpageController \n '
+                        + '> sendCredentials().success \n '
+                        + '> status: ' + response.status);
+                    //Write Response to Scope//
+                    $scope.Question = response.data;
+                }, function errorCallback(response) {
+                    $scope.$log.log('startpageModule      - startpageController \n '
+                        + '> sendCredentials().error \n '
+                        + '> status: ' + response.status);
+                });
+            };
 
         }
     ]);

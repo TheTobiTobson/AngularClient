@@ -7,26 +7,26 @@
     <h2>Login</h2>
     <md-input-container>
         <label>Email</label>
-        <input type="text" ng-model="loginCredentials.email" required md-maxlength="10">
+        <input type="email" ng-model="loginCredentials.username" required>
     </md-input-container>    
 
     <md-input-container>
         <label>Password</label>
-        <input type="text" ng-model="loginCredentials.password" required md-maxlength="10">
+        <input type="password" ng-model="loginCredentials.password" required md-maxlength="10">
     </md-input-container>
 
 
-    <md-button class="md-raised" ng-click="sendCredentialsToLogin()">Login</md-button>
+    <md-button class="md-raised" ng-click="sendCredentials()">Login</md-button>
 
     <h2>Registrieren</h2>
     <md-input-container>
         <label>Email</label>
-        <input type="text" ng-model="email_register" required md-maxlength="10">
+        <input type="email" ng-model="email_register" required>
     </md-input-container>
 
     <md-input-container>
         <label>Password</label>
-        <input type="text" ng-model="password_register" required md-maxlength="10"> 
+        <input type="password" ng-model="password_register" required md-maxlength="10"> 
     </md-input-container>
 
     <h2>API calls</h2>
