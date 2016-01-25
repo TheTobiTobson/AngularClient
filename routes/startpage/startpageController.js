@@ -4,8 +4,8 @@
 angular.module('startpageModule')
 
 .controller('startpageController',
-    ['$scope','$http', 
-        function ($scope, $http) {
+    ['$rootScope', '$scope', '$http',
+        function ($rootScope, $scope, $http) {
             $scope.$log.log('startpageModule      - startpageController  - .controller          - Entered');
 
 
@@ -24,47 +24,84 @@ angular.module('startpageModule')
                }
             ];
 
+            // Place to store access token globally
+            $rootScope.oauth = {
+                "access_token": null
+            };
+
+            $scope.loginCredentials = {
+                username: "",
+                password: ""
+            };
+
+            // Http Header Data
+            $scope.httpheaders = {
+                status: -1,
+                statusText: "null",
+                access_token: "null"
+            };
+
+            // Fill correct data to loginform
+            $scope.setRightCredentials = function () {
+                $scope.loginCredentials.username = "Simon@TheRealUser.com";
+                $scope.loginCredentials.password = "Password!1";
+            }
+                       
+            // Remove http header
+            $scope.forgetCredentials = function () {
+                $rootScope.oauth.access_token = "null";
+            }
+
             // Clear data//
             $scope.clearResults = function () {
                 $scope.Question = "";
             }
 
+           //--------------------------------- Send and Receive ---------------------------------//
 
-           // GET Questions
-            $scope.getOneQuestion = function () {
+            // GET Questions Protected
+            $scope.getOneQuestionProtected = function () {
                 $http({
-                    method: 'GET',
-                    url: 'http://localhost:54599/api/QUE_FeedbackQuestions/2'
+                    method: 'GET',                    
+                    url: 'http://localhost:54599/test/api/Feedbacksession_protected/2',
+                    headers: { 'Authorization': 'Bearer ' + $rootScope.oauth.access_token }
                 }).then(function successCallback(response) {
                     $scope.$log.log('startpageModule      - startpageController \n '
-                        + '> getOneQuestion().success \n '
+                        + '> getOneQuestionProtected().success \n '
                         + '> status: ' + response.status);
                         //Write Response to Scope//
                         $scope.Question = response.data;
                 }, function errorCallback(response) {
                     $scope.$log.log('startpageModule      - startpageController \n '
-                        + '> getOneQuestion().error \n '
+                        + '> getOneQuestionProtected().error \n '
                         + '> status: ' + response.status);
                 });
             };
-                      
+
+            // GET Questions Unprotected
+            $scope.getOneQuestionUNProtected = function () {
+                $http({
+                    method: 'GET',                  
+                    url: 'http://localhost:54599/test/api/Feedbacksession_unprotected/2'
+                }).then(function successCallback(response) {
+                    $scope.$log.log('startpageModule      - startpageController \n '
+                        + '> getOneQuestionUNProtected().success \n '
+                        + '> status: ' + response.status);
+                    //Write Response to Scope//
+                    $scope.Question = response.data;
+                }, function errorCallback(response) {
+                    $scope.$log.log('startpageModule      - startpageController \n '
+                        + '> getOneQuestionUNProtected().error \n '
+                        + '> status: ' + response.status);
+                });
+            };                      
 
             // POST Credentials
             $scope.sendCredentials = function () {
-
-                /////VERSION 1 //////
-                //$http({
-                //    method: 'POST',
-                //    url: 'http://localhost:54599/Token',
-                //    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                //    data: { username: $scope.loginCredentials.email, password: $scope.loginCredentials.password }
-                //})
-            /////VERSION 2 ////
                 $http({
                     method: 'POST',
                     url: 'http://localhost:54599/Token',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    //withCredentials: true, // REMOVE ON PRODUCTION
                     transformRequest: function (credentials) {
                         var str = [];
                         for (var p in credentials)
@@ -78,11 +115,21 @@ angular.module('startpageModule')
                         + '> sendCredentials().success \n '
                         + '> status: ' + response.status);
                     //Write Response to Scope//
-                    $scope.Question = response.data;
+                    $scope.httpheaders.status = response.status;
+                    $scope.httpheaders.statusText = response.statusText;
+                    // Store Access Token
+                    //$scope.httpheaders.access_token = response.data.access_token;
+                    // $http.defaults.headers.common['Authorization'] = "Bearer " + response.data.access_token;
+                    //$scope.httpheaders.access_token = response.data.access_token;
+                    $rootScope.oauth.access_token = response.data.access_token;
+
                 }, function errorCallback(response) {
                     $scope.$log.log('startpageModule      - startpageController \n '
                         + '> sendCredentials().error \n '
                         + '> status: ' + response.status);
+                    //Write Response to Scope//
+                    $scope.httpheaders.status = response.status;
+                    $scope.httpheaders.statusText = response.statusText;
                 });
             };
 
