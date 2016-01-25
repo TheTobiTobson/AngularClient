@@ -14,13 +14,14 @@ angular.module('startpageModule')
             $scope.Question = [
                {
                    QUE_id: -1,
-                   QUE_FBS_id: -1,
-                   QUE_type: '',
                    QUE_position: '',
                    QUE_text: '',
                    QUE_answerRadioButton: '',
                    QUE_title: '',
-                   QUE_showQuestionInFeedback: false
+                   QUE_type: '',
+                   QUE_showQuestionInFeedback: false,
+                   QUE_FBS_id: -1,
+                   QUE_creationDate: -1
                }
             ];
 
@@ -43,7 +44,7 @@ angular.module('startpageModule')
 
             // Fill correct data to loginform
             $scope.setRightCredentials = function () {
-                $scope.loginCredentials.username = "Simon@TheRealUser.com";
+                $scope.loginCredentials.username = "tobi@TheRealUser.com";
                 $scope.loginCredentials.password = "Password!1";
             }
                        

@@ -6,9 +6,9 @@
     <p><a href="#/about">about</a></p>
 
     <h2>API calls</h2>
-    <md-button class="md-raised" ng-click="getOneQuestion()">CallUnprotectedAPI</md-button>
+    <md-button class="md-raised" ng-click="getAllQuestionsBelongingToFBS()">GetAllQuestions</md-button>
 
-    <!--Layout Container Input Form-->
+    <!--Layout Container Input Form No 1 -->
     <div layout="row">
         <md-content class="borderBlack">
             <form name="designerForm">
@@ -71,6 +71,146 @@
                     <md-input-container class="md-block">
                         <label>QUE_text</label>
                         <textarea ng-model="Question[0].QUE_text" columns="1" md-maxlength="300" rows="5"></textarea>
+                    </md-input-container>
+                </div>
+            </form>
+        </md-content>
+    </div>
+    <!--Layout Container Input Form-->
+
+    <!--Layout Container Input Form No 2 -->
+    <div layout="row">
+        <md-content class="borderBlack">
+            <form name="designerForm">
+                <!--Row one-->
+                <div>
+                    <md-input-container flex-gt-sm="row">
+                        <label>QUE_id</label>
+                        <input type="number" min="0" required name="QUE_id" ng-model="Question[1].QUE_id">
+                        <div ng-messages="designerForm.QUE_id.$error">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container flex-gt-sm="row">
+                        <label>QUE_FBS_id</label>
+                        <input type="number" min="0" required name="QUE_FBS_id" ng-model="Question[1].QUE_FBS_id">
+                        <div ng-messages="designerForm.QUE_FBS_id.$error">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container flex-gt-sm="row">
+                        <label>QUE_position</label>
+                        <input type="number" min="0" required name="QUE_position" ng-model="Question[1].QUE_position">
+                        <div ng-messages="designerForm.QUE_position.$error">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container flex-gt-sm="row">
+                        <label>QUE_type</label>
+                        <md-select ng-model="Question[1].QUE_type">
+                            <md-option ng-repeat="x in questionTypes">{{x}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <!--Row two-->
+                <div>
+                    <md-input-container flex-gt-sm="row">
+                        <label>QUE_answerRadioButton</label>
+                        <input md-maxlength="30" required name="QUE_answerRadioButton" ng-model="Question[1].QUE_answerRadioButton">
+                        <div ng-messages="designerForm.QUE_answerRadioButton.$error">
+                            <div ng-message="required">This is required.</div>
+                            <div ng-message="md-maxlength">QUE_answerRadioButton has to be less than 30 characters long.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container flex-gt-sm="row">
+                        <label>QUE_title</label>
+                        <input md-maxlength="30" required name="QUE_title" ng-model="Question[1].QUE_title">
+                        <div ng-messages="designerForm.QUE_title.$error">
+                            <div ng-message="required">This is required.</div>
+                            <div ng-message="md-maxlength">QUE_title has to be less than 30 characters long.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container flex-gt-sm="row">
+                        <label>QUE_showQuestionInFeedback</label>
+                        <md-select ng-model="Question[1].QUE_showQuestionInFeedback">
+                            <md-option ng-repeat="x in dropdownShowHide">{{x}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div>
+                    <md-input-container class="md-block">
+                        <label>QUE_text</label>
+                        <textarea ng-model="Question[1].QUE_text" columns="1" md-maxlength="300" rows="5"></textarea>
+                    </md-input-container>
+                </div>
+            </form>
+        </md-content>
+    </div>
+    <!--Layout Container Input Form-->
+
+    <!--Layout Container Input Form No 3 -->
+    <div layout="row">
+        <md-content class="borderBlack">
+            <form name="designerForm">
+                <!--Row one-->
+                <div>
+                    <md-input-container flex-gt-sm="row">
+                        <label>QUE_id</label>
+                        <input type="number" min="0" required name="QUE_id" ng-model="Question[2].QUE_id">
+                        <div ng-messages="designerForm.QUE_id.$error">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container flex-gt-sm="row">
+                        <label>QUE_FBS_id</label>
+                        <input type="number" min="0" required name="QUE_FBS_id" ng-model="Question[2].QUE_FBS_id">
+                        <div ng-messages="designerForm.QUE_FBS_id.$error">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container flex-gt-sm="row">
+                        <label>QUE_position</label>
+                        <input type="number" min="0" required name="QUE_position" ng-model="Question[2].QUE_position">
+                        <div ng-messages="designerForm.QUE_position.$error">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container flex-gt-sm="row">
+                        <label>QUE_type</label>
+                        <md-select ng-model="Question[2].QUE_type">
+                            <md-option ng-repeat="x in questionTypes">{{x}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <!--Row two-->
+                <div>
+                    <md-input-container flex-gt-sm="row">
+                        <label>QUE_answerRadioButton</label>
+                        <input md-maxlength="30" required name="QUE_answerRadioButton" ng-model="Question[2].QUE_answerRadioButton">
+                        <div ng-messages="designerForm.QUE_answerRadioButton.$error">
+                            <div ng-message="required">This is required.</div>
+                            <div ng-message="md-maxlength">QUE_answerRadioButton has to be less than 30 characters long.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container flex-gt-sm="row">
+                        <label>QUE_title</label>
+                        <input md-maxlength="30" required name="QUE_title" ng-model="Question[2].QUE_title">
+                        <div ng-messages="designerForm.QUE_title.$error">
+                            <div ng-message="required">This is required.</div>
+                            <div ng-message="md-maxlength">QUE_title has to be less than 30 characters long.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container flex-gt-sm="row">
+                        <label>QUE_showQuestionInFeedback</label>
+                        <md-select ng-model="Question[2].QUE_showQuestionInFeedback">
+                            <md-option ng-repeat="x in dropdownShowHide">{{x}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div>
+                    <md-input-container class="md-block">
+                        <label>QUE_text</label>
+                        <textarea ng-model="Question[2].QUE_text" columns="1" md-maxlength="300" rows="5"></textarea>
                     </md-input-container>
                 </div>
             </form>

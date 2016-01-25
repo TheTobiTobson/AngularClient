@@ -4,8 +4,8 @@
 angular.module('designerModule')
 
 .controller('designerController',
-    ['$scope', 'ComServiceDesigner',
-        function ($scope, ComServiceDesigner) {
+    ['$rootScope', '$scope', '$http',
+        function ($rootScope, $scope, $http) {
             $scope.$log.log('designerModule       - designerController   - .controller          - Entered');
 
             /**** Data ****/
@@ -13,33 +13,38 @@ angular.module('designerModule')
             $scope.Question = [
                {
                    QUE_id: -1,
-                   QUE_FBS_id: -1,
-                   QUE_type: '',
                    QUE_position: '',
                    QUE_text: '',
                    QUE_answerRadioButton: '',
                    QUE_title: '',
-                   QUE_showQuestionInFeedback: false
+                   QUE_type: '',
+                   QUE_showQuestionInFeedback: false,
+                   QUE_FBS_id: -1,
+                   QUE_creationDate: -1
+               },
+               {
+                   QUE_id: -2,
+                   QUE_position: '',
+                   QUE_text: '',
+                   QUE_answerRadioButton: '',
+                   QUE_title: '',
+                   QUE_type: '',
+                   QUE_showQuestionInFeedback: false,
+                   QUE_FBS_id: -1,
+                   QUE_creationDate: -1
+               },
+               {
+                   QUE_id: -3,
+                   QUE_position: '',
+                   QUE_text: '',
+                   QUE_answerRadioButton: '',
+                   QUE_title: '',
+                   QUE_type: '',
+                   QUE_showQuestionInFeedback: false,
+                   QUE_FBS_id: -1,
+                   QUE_creationDate: -1
                }
-            ];
-
-            // Call API//
-            $scope.getOneQuestion = function () {
-                ComServiceDesigner.getQuestions()
-                        .then(function successCallback(response) {
-                            $scope.$log.log('startpageModule      - startpageController \n '
-                            + '> ComService.getQuestions().success \n '
-                            + '> status: ' + response.status);
-                            //Write Response to Scope//
-                            $scope.Question[0] = response.data;
-
-                        }, function errorCallback(response) {
-                            $scope.$log.log('startpageModule      - startpageController \n '
-                            + '> ComService.getQuestions().error \n '
-                            + '> status: ' + response.status);
-                        })
-
-            }
+            ];           
 
             //DropDow
             // QuestionTypesOptions
@@ -55,6 +60,28 @@ angular.module('designerModule')
                  "Show",                 
                  "Hide"
             ];
+
+
+            //--------------------------------- Send and Receive ---------------------------------//
+            // GET Questions Protected
+            $scope.getAllQuestionsBelongingToFBS = function () {
+                $http({
+                    method: 'GET',
+                    url: 'http://localhost:54599/api/Feedbackquestions/1',
+                    headers: { 'Authorization': 'Bearer ' + $rootScope.oauth.access_token }
+                }).then(function successCallback(response) {
+                    $scope.$log.log('startpageModule      - startpageController \n '
+                        + '> getOneQuestionProtected().success \n '
+                        + '> status: ' + response.status);
+                    //Write Response to Scope//
+                    $scope.Question = response.data;
+                }, function errorCallback(response) {
+                    $scope.$log.log('startpageModule      - startpageController \n '
+                        + '> getOneQuestionProtected().error \n '
+                        + '> status: ' + response.status);
+                });
+
+            };
 
         }]);
 
