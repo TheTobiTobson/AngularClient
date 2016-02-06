@@ -45,5 +45,10 @@ angular.module('feedMeMainApp', [
         //Putting $log to $rootscope to give access  from all parts of the app//
         $rootScope.$log = $log;
         $rootScope.$log.log('Modul: feedMeMainApp - .run - Entered');
+
+        // Place to store access token globally
+        $rootScope.oauth = {
+        };
+
       
     }]);

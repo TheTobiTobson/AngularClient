@@ -24,12 +24,7 @@ angular.module('startpageModule')
                    QUE_creationDate: -1
                }
             ];
-
-            // Place to store access token globally
-            $rootScope.oauth = {
-                "access_token": null
-            };
-
+                       
             $scope.loginCredentials = {
                 username: "",
                 password: ""

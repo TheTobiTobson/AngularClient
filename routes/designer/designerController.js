@@ -10,41 +10,7 @@ angular.module('designerModule')
 
             /**** Data ****/
             // Question Data
-            $scope.Question = [
-               {
-                   QUE_id: -1,
-                   QUE_position: '',
-                   QUE_text: '',
-                   QUE_answerRadioButton: '',
-                   QUE_title: '',
-                   QUE_type: '',
-                   QUE_showQuestionInFeedback: false,
-                   QUE_FBS_id: -1,
-                   QUE_creationDate: -1
-               },
-               {
-                   QUE_id: -2,
-                   QUE_position: '',
-                   QUE_text: '',
-                   QUE_answerRadioButton: '',
-                   QUE_title: '',
-                   QUE_type: '',
-                   QUE_showQuestionInFeedback: false,
-                   QUE_FBS_id: -1,
-                   QUE_creationDate: -1
-               },
-               {
-                   QUE_id: -3,
-                   QUE_position: '',
-                   QUE_text: '',
-                   QUE_answerRadioButton: '',
-                   QUE_title: '',
-                   QUE_type: '',
-                   QUE_showQuestionInFeedback: false,
-                   QUE_FBS_id: -1,
-                   QUE_creationDate: -1
-               }
-            ];           
+            $scope.Question = {};           
 
             //DropDow
             // QuestionTypesOptions
@@ -60,28 +26,47 @@ angular.module('designerModule')
                  "Show",                 
                  "Hide"
             ];
-
-
+            
             //--------------------------------- Send and Receive ---------------------------------//
-            // GET Questions Protected
+            // GET all Questions belonging to FBS
             $scope.getAllQuestionsBelongingToFBS = function () {
                 $http({
                     method: 'GET',
                     url: 'http://localhost:54599/api/Feedbackquestions/1',
                     headers: { 'Authorization': 'Bearer ' + $rootScope.oauth.access_token }
                 }).then(function successCallback(response) {
-                    $scope.$log.log('startpageModule      - startpageController \n '
-                        + '> getOneQuestionProtected().success \n '
+                    $scope.$log.log('designerModule      - designerController \n '
+                        + '> getAllQuestionsBelongingToFBS().success \n '
                         + '> status: ' + response.status);
                     //Write Response to Scope//
                     $scope.Question = response.data;
                 }, function errorCallback(response) {
-                    $scope.$log.log('startpageModule      - startpageController \n '
-                        + '> getOneQuestionProtected().error \n '
+                    $scope.$log.log('designerModule      - designerController \n '
+                        + '> getAllQuestionsBelongingToFBS().error \n '
                         + '> status: ' + response.status);
                 });
-
             };
+
+                
+            // Update(PUT) one Question
+            $scope.updateQuestion = function (QUE_id_of_question_to_update) {
+                $http({
+                    method: 'PUT',
+                    url: 'http://localhost:54599/api/Feedbackquestion',
+                    headers: { 'Authorization': 'Bearer ' + $rootScope.oauth.access_token },                    
+                    data: $scope.Question[0]
+
+                }).then(function successCallback(response) {
+                    $scope.$log.log('designerModule      - designerController \n '
+                        + '> updateQuestion().success \n '
+                        + '> status: ' + response.status);
+                }, function errorCallback(response) {
+                    $scope.$log.log('designerModule      - designerController \n '
+                        + '> updateQuestion().error \n '
+                        + '> status: ' + response.status);
+                });
+            };
+          
 
         }]);
 
