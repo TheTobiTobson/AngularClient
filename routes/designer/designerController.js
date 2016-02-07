@@ -14,8 +14,7 @@ angular.module('designerModule')
 
             //DropDow
             // QuestionTypesOptions
-            $scope.questionTypes = [
-                 "Ja/Nein-Frage",
+            $scope.questionTypes = [                 
                  "Freitext",
                  "Auswahl"
             ];
@@ -39,7 +38,7 @@ angular.module('designerModule')
                         + '> getAllQuestionsBelongingToFBS().success \n '
                         + '> status: ' + response.status);
                     //Write Response to Scope//
-                    $scope.Question = response.data;
+                    $scope.Questions = response.data;
                 }, function errorCallback(response) {
                     $scope.$log.log('designerModule      - designerController \n '
                         + '> getAllQuestionsBelongingToFBS().error \n '
@@ -54,7 +53,7 @@ angular.module('designerModule')
                     method: 'PUT',
                     url: 'http://localhost:54599/api/Feedbackquestion',
                     headers: { 'Authorization': 'Bearer ' + $rootScope.oauth.access_token },                    
-                    data: $scope.Question[0]
+                    data: $scope.Questions[0]
 
                 }).then(function successCallback(response) {
                     $scope.$log.log('designerModule      - designerController \n '
