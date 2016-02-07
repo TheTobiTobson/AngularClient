@@ -7,5 +7,14 @@ angular.module('aboutModule')
     ['$scope',
         function ($scope) {
             $scope.$log.log('aboutModule          - aboutController      - .controller          - Entered');
-        }]);
+
+            $scope.inhalte = [
+                { "Titel": "Eins", "Type": "Text" },
+                { "Titel": "Zwei", "Type": "MultipleChoice" },
+                { "Titel": "Drei", "Type": "JaNein" }
+            ];
+
+            $scope.anzeige = "hihih";
+
+}]);
 

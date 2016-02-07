@@ -51,4 +51,75 @@ angular.module('feedMeMainApp', [
         };
 
       
-    }]);
+    }])
+
+
+.directive('helloWorld', function ($compile) {
+
+    var TextTemplate = '<div> Text AA</div>';
+    var MultipleChoiceTemplate = '<div> MultipleChoice TTT</div>';
+    var JaNeinTemplate = '<div> JaNein BB</div>';
+
+    var getTemplate = function (contentType) {
+        var template = '';
+
+        switch (contentType) {
+            case 'Text':
+                template = TextTemplate;
+                break;
+            case 'MultipleChoice':
+                template = MultipleChoiceTemplate;
+                break;
+            case 'JaNein':
+                template = JaNeinTemplate;
+                break;
+        }
+
+        return template;
+    }
+
+
+    var linker = function ($scope, element, attrs) {
+        
+        //element.bind('click', function () {
+        //    element.html('You clicked me');
+        //});
+
+        element.html(getTemplate("Text"));
+        alert($scope.inhalte[1].Titel);
+    }
+
+
+    return {
+        restrict: 'E',
+        replace: 'true',
+        template: '<h3>{{item.Titel}}lolololo</h3>',
+        // DOM manipulation //
+        //scope: {},
+        link: linker
+    };
+
+});
+
+
+
+//.directive('helloWorld', function () {
+
+//    return {
+//        restrict: 'E',
+//        replace: 'true',
+//        template: '<h3>Hello Worldhihi!!{{vari}}</h3>',
+//        // DOM manipulation //
+//        link: function ($scope, element, attrs) {
+//            element.bind('click', function () {
+//                element.html('You clicked me');
+//            });
+//            element.bind('mouseenter', function () {
+//                element.css('background-color', 'yellow');
+//            });
+//            element.bind('mouseleave', function () {
+//                element.css('background-color', 'white');
+//            });
+//        }
+//    };  
+//});

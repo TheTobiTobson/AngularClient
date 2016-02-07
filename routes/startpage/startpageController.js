@@ -8,6 +8,7 @@ angular.module('startpageModule')
         function ($rootScope, $scope, $http) {
             $scope.$log.log('startpageModule      - startpageController  - .controller          - Entered');
 
+            $scope.vari = "ICH BIN STARTPAGE";
 
             /**** Data ****/
             // Question Data
