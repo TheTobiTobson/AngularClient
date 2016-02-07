@@ -56,7 +56,7 @@ angular.module('feedMeMainApp', [
 
 .directive('helloWorld', function ($compile) {
 
-    var TextTemplate = '<div> Text AA</div>';
+    var TextTemplate = '<div layout="row"><md-content class="borderBlack"><form name="designerForm_No1"><div><md-input-container class="md-block"><label>QUE_text</label><textarea ng-model="inhalte[0].Text" columns="1" md-maxlength="300" rows="5"></textarea></md-input-container></div></form></md-content></div>';
     var MultipleChoiceTemplate = '<div> MultipleChoice TTT</div>';
     var JaNeinTemplate = '<div> JaNein BB</div>';
 
@@ -79,23 +79,25 @@ angular.module('feedMeMainApp', [
     }
 
 
-    var linker = function ($scope, element, attrs) {
-        
-        //element.bind('click', function () {
-        //    element.html('You clicked me');
-        //});
+    var linker = function ($scope, element, attrs) {        
+       
+        // Isolated Scope //
+        element.html(getTemplate($scope.content.Type));
+       
+        // Normal scope //
+        //element.html(getTemplate($scope.inhalte[0].Type));
 
-        element.html(getTemplate("Text"));
-        alert($scope.inhalte[1].Titel);
+        $compile(element.contents())($scope);
     }
 
 
     return {
         restrict: 'E',
         replace: 'true',
-        template: '<h3>{{item.Titel}}lolololo</h3>',
-        // DOM manipulation //
-        //scope: {},
+       // template: '<h3>{{item.Titel}}lolololo</h3>',
+        scope: {
+            content:'='
+        },
         link: linker
     };
 

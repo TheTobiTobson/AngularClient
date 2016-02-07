@@ -9,9 +9,9 @@ angular.module('aboutModule')
             $scope.$log.log('aboutModule          - aboutController      - .controller          - Entered');
 
             $scope.inhalte = [
-                { "Titel": "Eins", "Type": "Text" },
-                { "Titel": "Zwei", "Type": "MultipleChoice" },
-                { "Titel": "Drei", "Type": "JaNein" }
+                { "Titel": "Eins", "Type": "Text", "Text":"" },
+                { "Titel": "Zwei", "Type": "MultipleChoice", "Text": "" },
+                { "Titel": "Drei", "Type": "JaNein", "Text": "" }
             ];
 
             $scope.anzeige = "hihih";
