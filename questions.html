@@ -1,17 +1,142 @@
 ﻿
-<div ng-switch="item.Type">
-    <div ng-switch-when="Text">
-        <h1>Text</h1>
-        <p>Welcome to a world of Text.</p>
+<div ng-switch="Question.QUE_type">
+
+<!---------------------->
+<!--Start Auswahl: Text-->
+    <div ng-switch-when="Freitext">
+        <div layout="row">
+            <md-content class="borderBlack">
+                <form name="designerForm_No1">
+                    <!--Row one-->
+                    <div>
+                        <md-input-container flex-gt-sm="row">
+                            <label>QUE_id</label>
+                            <input type="number" min="0" required name="QUE_id" ng-model="Question.QUE_id" disabled>
+                            <div ng-messages="designerForm_No1.QUE_id.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container flex-gt-sm="row">
+                            <label>QUE_FBS_id</label>
+                            <input type="number" min="0" required name="QUE_FBS_id" ng-model="Question.QUE_FBS_id" disabled>
+                            <div ng-messages="designerForm_No1.QUE_FBS_id.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container flex-gt-sm="row">
+                            <label>QUE_position</label>
+                            <input type="number" min="0" required name="QUE_position" ng-model="Question.QUE_position">
+                            <div ng-messages="designerForm_No1.QUE_position.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container flex-gt-sm="row">
+                            <label>QUE_type</label>
+                            <md-select ng-model="Question.QUE_type">
+                                <md-option ng-repeat="x in questionTypes">{{x}}</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                    <!--Row two-->
+                    <div>                      
+                        <md-input-container flex-gt-sm="row">
+                            <label>QUE_title</label>
+                            <input required name="QUE_title" ng-model="Question.QUE_title">
+                            <div ng-messages="designerForm_No1.QUE_title.$error">
+                                <div ng-message="required">This is required.</div>
+                                <div ng-message="md-maxlength">QUE_title has to be less than 30 characters long.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container flex-gt-sm="row">
+                            <label>QUE_showQuestionInFeedback</label>
+                            <md-select ng-model="Question.QUE_showQuestionInFeedback">
+                                <md-option ng-repeat="x in dropdownShowHide">{{x}}</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                    <div>
+                        <md-input-container class="md-block">
+                            <label>QUE_text</label>
+                            <textarea ng-model="Question.QUE_text" columns="1" md-maxlength="300" rows="5"></textarea>
+                        </md-input-container>
+                    </div>
+                </form>
+                <md-button class="md-raised" ng-click="updateQuestion(Question.QUE_id)">updateQuestion</md-button>
+            </md-content>
+        </div>
     </div>
-    <div ng-switch-when="MultipleChoice">
-        <h1>MultipleChoice</h1>
-        <p>Learn from MultipleChoice.</p>
+<!--Ende Auswahl: Text-->
+<!---------------------->
+
+
+<!---------------------->
+<!--Start Auswahl: Auswahl-->
+    <div ng-switch-when="Auswahl">        
+        <div layout="row">
+            <md-content class="borderBlack">
+                <form name="designerForm_No1">
+                    <!--Row one-->
+                    <div>
+                        <md-input-container flex-gt-sm="row">
+                            <label>QUE_id</label>
+                            <input type="number" min="0" required name="QUE_id" ng-model="Question.QUE_id" disabled>
+                            <div ng-messages="designerForm_No1.QUE_id.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container flex-gt-sm="row">
+                            <label>QUE_FBS_id</label>
+                            <input type="number" min="0" required name="QUE_FBS_id" ng-model="Question.QUE_FBS_id" disabled>
+                            <div ng-messages="designerForm_No1.QUE_FBS_id.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container flex-gt-sm="row">
+                            <label>QUE_position</label>
+                            <input type="number" min="0" required name="QUE_position" ng-model="Question.QUE_position">
+                            <div ng-messages="designerForm_No1.QUE_position.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container flex-gt-sm="row">
+                            <label>QUE_type</label>
+                            <md-select ng-model="Question.QUE_type">
+                                <md-option ng-repeat="x in questionTypes">{{x}}</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                    <!--Row two-->
+                    <div>
+                        <md-input-container flex-gt-sm="row">
+                            <label>QUE_title</label>
+                            <input required name="QUE_title" ng-model="Question.QUE_title">
+                            <div ng-messages="designerForm_No1.QUE_title.$error">
+                                <div ng-message="required">This is required.</div>
+                                <div ng-message="md-maxlength">QUE_title has to be less than 30 characters long.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container flex-gt-sm="row">
+                            <label>QUE_showQuestionInFeedback</label>
+                            <md-select ng-model="Question.QUE_showQuestionInFeedback">
+                                <md-option ng-repeat="x in dropdownShowHide">{{x}}</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                    <div>
+                        <md-radio-group ng-model="Question.QUE_answerRadioButton">
+                            <md-radio-button value="Apple" class="md-primary">Apple</md-radio-button>
+                            <md-radio-button value="Banana"> Banana </md-radio-button>
+                            <md-radio-button value="Mango">Mango</md-radio-button>
+                        </md-radio-group>
+                    </div>
+                </form>
+                <md-button class="md-raised" ng-click="updateQuestion(Question.QUE_id)">updateQuestion</md-button>
+            </md-content>
+        </div>
     </div>
-    <div ng-switch-when="JaNein">
-        <h1>JaNein</h1>
-        <p>Read about JaNein.</p>
-    </div>
+<!--Ende Auswahl: Text-->
+<!---------------------->
+
     <div ng-switch-default>
         <h1>DEFAULT</h1>
         <p>HERE IS NOTHING TO SHOW</p>
