@@ -54,54 +54,66 @@ angular.module('feedMeMainApp', [
     }])
 
 
-.directive('helloWorld', function ($compile) {
-
-    var TextTemplate = '<div layout="row"><md-content class="borderBlack"><form name="designerForm_No1"><div><md-input-container class="md-block"><label>QUE_text</label><textarea ng-model="inhalte[0].Text" columns="1" md-maxlength="300" rows="5"></textarea></md-input-container></div></form></md-content></div>';
-    var MultipleChoiceTemplate = '<div> MultipleChoice TTT</div>';
-    var JaNeinTemplate = '<div> JaNein BB</div>';
-
-    var getTemplate = function (contentType) {
-        var template = '';
-
-        switch (contentType) {
-            case 'Text':
-                template = TextTemplate;
-                break;
-            case 'MultipleChoice':
-                template = MultipleChoiceTemplate;
-                break;
-            case 'JaNein':
-                template = JaNeinTemplate;
-                break;
-        }
-
-        return template;
-    }
-
-
-    var linker = function ($scope, element, attrs) {        
-       
-        // Isolated Scope //
-        element.html(getTemplate($scope.content.Type));
-       
-        // Normal scope //
-        //element.html(getTemplate($scope.inhalte[0].Type));
-
-        $compile(element.contents())($scope);
-    }
-
-
+.directive('helloWorld', function () {        
     return {
-        restrict: 'E',
-        replace: 'true',
-       // template: '<h3>{{item.Titel}}lolololo</h3>',
-        scope: {
-            content:'='
-        },
-        link: linker
-    };
+            restrict: 'E',
+            replace: 'true',
+            templateUrl: 'questions.html'
+          //  template: '<h3>{{item.Titel}}lolololo</h3>'
+        };
+    });
 
-});
+
+
+
+//.directive('helloWorld', function ($compile) {
+
+//    var TextTemplate = '<div layout="row"><md-content class="borderBlack"><form name="designerForm_No1"><div><md-input-container class="md-block"><label>QUE_text</label><textarea ng-model="inhalte[0].Text" columns="1" md-maxlength="300" rows="5"></textarea></md-input-container></div></form></md-content></div>';
+//    var MultipleChoiceTemplate = '<div> MultipleChoice TTT</div>';
+//    var JaNeinTemplate = '<div> JaNein BB</div>';
+
+//    var getTemplate = function (contentType) {
+//        var template = '';
+
+//        switch (contentType) {
+//            case 'Text':
+//                template = TextTemplate;
+//                break;
+//            case 'MultipleChoice':
+//                template = MultipleChoiceTemplate;
+//                break;
+//            case 'JaNein':
+//                template = JaNeinTemplate;
+//                break;
+//        }
+
+//        return template;
+//    }
+
+
+//    var linker = function ($scope, element, attrs) {        
+       
+//        // Isolated Scope //
+//        element.html(getTemplate($scope.content.Type));
+       
+//        // Normal scope //
+//        //element.html(getTemplate($scope.inhalte[0].Type));
+
+//        $compile(element.contents())($scope);
+//    }
+
+
+//    return {
+//        restrict: 'E',
+//        replace: 'true',
+//       // template: '<h3>{{item.Titel}}lolololo</h3>',
+//        scope: {
+//            content:'='
+//        },
+//        link: linker
+//    };
+
+//});
 
 
 

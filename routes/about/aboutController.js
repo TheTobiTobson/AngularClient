@@ -11,7 +11,8 @@ angular.module('aboutModule')
             $scope.inhalte = [
                 { "Titel": "Eins", "Type": "Text", "Text":"" },
                 { "Titel": "Zwei", "Type": "MultipleChoice", "Text": "" },
-                { "Titel": "Drei", "Type": "JaNein", "Text": "" }
+                { "Titel": "Drei", "Type": "JaNein", "Text": "" },
+                { "Titel": "Vier", "Type": "JaNein", "Text": "" }
             ];
 
             $scope.anzeige = "hihih";
