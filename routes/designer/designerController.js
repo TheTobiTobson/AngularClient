@@ -10,7 +10,8 @@ angular.module('designerModule')
 
             /**** Data ****/
             // Question Data
-            $scope.Question = {};           
+            //$scope.Question = {};
+            $scope.idToIndexLookupArray = [];
 
             //DropDow
             // QuestionTypesOptions
@@ -25,7 +26,15 @@ angular.module('designerModule')
                  "Show",                 
                  "Hide"
             ];
-            
+
+            // Create Lookup Array to match index of array and id 
+            $scope.CreateLookupArray = function () {              
+                for (var i = 0, len = $scope.ClientQuestionsArray.length; i < len; i++) {                    
+                    $scope.idToIndexLookupArray[i] = $scope.ClientQuestionsArray[i].QUE_id;
+                }
+            };
+                     
+
             //--------------------------------- Send and Receive ---------------------------------//
             // GET all Questions belonging to FBS
             $scope.getAllQuestionsBelongingToFBS = function () {
@@ -38,7 +47,8 @@ angular.module('designerModule')
                         + '> getAllQuestionsBelongingToFBS().success \n '
                         + '> status: ' + response.status);
                     //Write Response to Scope//
-                    $scope.Questions = response.data;
+                    $scope.ClientQuestionsArray = response.data;
+                    $scope.CreateLookupArray();
                 }, function errorCallback(response) {
                     $scope.$log.log('designerModule      - designerController \n '
                         + '> getAllQuestionsBelongingToFBS().error \n '
@@ -53,7 +63,7 @@ angular.module('designerModule')
                     method: 'PUT',
                     url: 'http://localhost:54599/api/Feedbackquestion',
                     headers: { 'Authorization': 'Bearer ' + $rootScope.oauth.access_token },                    
-                    data: $scope.Questions[0]
+                    data: $scope.ClientQuestionsArray[$scope.idToIndexLookupArray.indexOf(QUE_id_of_question_to_update)]
 
                 }).then(function successCallback(response) {
                     $scope.$log.log('designerModule      - designerController \n '

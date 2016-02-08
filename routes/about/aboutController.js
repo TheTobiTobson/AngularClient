@@ -8,54 +8,28 @@ angular.module('aboutModule')
         function ($scope) {
             $scope.$log.log('aboutModule          - aboutController      - .controller          - Entered');
 
-            //$scope.inhalte = [
-            //    { "Titel": "Eins", "Type": "Text", "Text":"" },
-            //    { "Titel": "Zwei", "Type": "MultipleChoice", "Text": "" },
-            //    { "Titel": "Drei", "Type": "JaNein", "Text": "" },
-            //    { "Titel": "Vier", "Type": "JaNein", "Text": "" }
-            //];
+            $scope.TheRealArray = [
+                { "id": 101, "name": "Tobi" },
+                { "id": 22, "name": "Alex" },
+                { "id": 34, "name": "Simon" }
+            ];
 
-            //// Update(PUT) one Question
-            //$scope.updateQuestion = function (QUE_id_of_question_to_update) {
-            //    alert(QUE_id_of_question_to_update);
-            //};
-
-            ////DropDow
-            //// QuestionTypesOptions
-            //$scope.questionTypes = [               
-            //     "Freitext",
-            //     "Auswahl"
-            //];
-
-            ////DropDow
-            //// Show or hide question
-            //$scope.dropdownShowHide = [
-            //     "Show",
-            //     "Hide"
-            //];
+            $scope.lookup = [];
+            $scope.ArrayId = [];
 
 
-            //// Testdaten
-            //$scope.Questions = [{
-            //    "QUE_id": 22,
-            //    "QUE_FBS_id": 1,
-            //    "QUE_type": "Freitext",
-            //    "QUE_position": 5,
-            //    "QUE_text": "Hallo alle zusammen",
-            //    "QUE_answerRadioButton": "",
-            //    "QUE_title": "KING",
-            //    "QUE_showQuestionInFeedback": true
-            //},
-            //{
-            //    "QUE_id": 33,
-            //    "QUE_FBS_id": 3,
-            //    "QUE_type": "Auswahl",
-            //    "QUE_position": 2,
-            //    "QUE_text": "hihihih",
-            //    "QUE_answerRadioButton": "",
-            //    "QUE_title": "QUEEN",
-            //    "QUE_showQuestionInFeedback": false
-            //}];
+            $scope.CreateLookupArray = function () {                
+                //alert($scope.TheRealArray.length);                
+                for (var i = 0, len = $scope.TheRealArray.length; i < len; i++) {
+                    //lookup[array[i].id] = array[i];
+                    $scope.lookup[i] = $scope.TheRealArray[i].id;                }
+            };
 
+
+            $scope.SearchForId = function () {
+                $scope.ArrayId = $scope.lookup.indexOf($scope.searchingFor);
+            };
+
+            
 }]);
 

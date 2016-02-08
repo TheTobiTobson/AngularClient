@@ -8,7 +8,10 @@
     <h2>API calls</h2>
     <md-button class="md-raised" ng-click="getAllQuestionsBelongingToFBS()">GetAllQuestions</md-button>   
   
-    <hello-world ng-repeat="Question in Questions"></hello-world>
+    <hello-world ng-repeat="Question in ClientQuestionsArray"></hello-world>
+
+    <h3>This is LookupArray</h3>
+    {{idToIndexLookupArray}}
 
 </div>
 <!--End pagediv-->
