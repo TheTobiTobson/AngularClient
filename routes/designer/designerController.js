@@ -28,7 +28,8 @@ angular.module('designerModule')
             ];
 
             // Create Lookup Array to match index of array and id 
-            $scope.CreateLookupArray = function () {              
+            $scope.CreateLookupArray = function () {
+                $scope.idToIndexLookupArray = [];
                 for (var i = 0, len = $scope.ClientQuestionsArray.length; i < len; i++) {                    
                     $scope.idToIndexLookupArray[i] = $scope.ClientQuestionsArray[i].QUE_id;
                 }
@@ -72,6 +73,48 @@ angular.module('designerModule')
                 }, function errorCallback(response) {
                     $scope.$log.log('designerModule      - designerController \n '
                         + '> updateQuestion().error \n '
+                        + '> status: ' + response.status);
+                });
+            };
+
+
+            // Create(POST) one Question
+            $scope.createQuestion = function () {
+                // Create new question
+                $scope.questionToAppend = {
+                    QUE_position: 1,
+                    QUE_text: 'PLATZHALTER',
+                    QUE_answerRadioButton: '',
+                    QUE_title: 'PLATZHALTER',
+                    QUE_type: 'Freitext',
+                    QUE_showQuestionInFeedback: false,
+                    QUE_creationDate: -1,
+                    QUE_FBS_id: 1,
+                    FBS_FeedbackSession: 0
+                };
+
+                //Add new question to array
+                $scope.ClientQuestionsArray.push($scope.questionToAppend);
+
+                // POST request to server
+                $http({
+                    method: 'POST',
+                    url: 'http://localhost:54599/api/Feedbackquestion',
+                    headers: { 'Authorization': 'Bearer ' + $rootScope.oauth.access_token },
+                    //data: $scope.ClientQuestionsArray[$scope.ClientQuestionsArray.length]
+                    data: $scope.ClientQuestionsArray[$scope.ClientQuestionsArray.length-1]
+
+                }).then(function successCallback(response) {
+                    $scope.$log.log('designerModule      - designerController \n '
+                        + '> createQuestion().success \n '
+                        + '> status: ' + response.status);
+                    $scope.ClientQuestionsArray[$scope.ClientQuestionsArray.length - 1].QUE_id = response.data.QUE_id;
+
+                    $scope.CreateLookupArray();
+
+                }, function errorCallback(response) {
+                    $scope.$log.log('designerModule      - designerController \n '
+                        + '> createQuestion().error \n '
                         + '> status: ' + response.status);
                 });
             };

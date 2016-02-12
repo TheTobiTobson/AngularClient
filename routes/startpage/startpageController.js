@@ -21,8 +21,9 @@ angular.module('startpageModule')
                    QUE_title: '',
                    QUE_type: '',
                    QUE_showQuestionInFeedback: false,
-                   QUE_FBS_id: -1,
-                   QUE_creationDate: -1
+                   QUE_creationDate: 4,
+                   QUE_FBS_id: -1,                   
+                   FBS_FeedbackSession: 0
                }
             ];
                        
