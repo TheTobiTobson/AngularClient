@@ -116,6 +116,22 @@ angular.module('designerModule')
                     $scope.$log.log('designerModule      - designerController \n '
                         + '> createQuestion().error \n '
                         + '> status: ' + response.status);
+                                        
+                    if (response.status == -1) // Server not responding
+                    {
+                        alert("HTTP -1.\nDer Server ist nicht erreichbar. Bitte versuche es nocheinmal");
+                    }
+                    else if (response.status == 400) // Server replies BAD REQUEST
+                    {
+                        alert("HTTP 400.\nDie Frage konnte nicht angelegt werden. Bitte versuche es nocheinmal");
+                        $scope.getAllQuestionsBelongingToFBS();
+                    }
+                    else // Server responding something else
+                    {
+                        alert("HTTP x.\nEin Fehler ist aufgetreten. Bitte versuche es nocheinmal");
+                        $scope.getAllQuestionsBelongingToFBS();
+                    };
+                    
                 });
             };
           
