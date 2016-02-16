@@ -18,14 +18,18 @@ o Ueberblick ueber VORTEILE von MVC verschaffen > DONE
 
 o Passwort Reset Funktionalität > DONE
 
-o Client neu schreiben  > (5)
+o Client neu schreiben  > DONE
 
-o Demoapplikation Autorisierungsfunktionen/FBS und QUE lesen und schreiben > 
+o Demoapplikation Autorisierungsfunktionen/FBS und QUE lesen und schreiben > DONE
 
 
 >>PROTOTYPING<< (Birgt das Thema hohes Risiko? / Handelt es sich um eine grundlegende Funktionalität?)
 
 o Seiten aufbauen
+
+oo designer
+
+ooo Trigger für autosave in Client einbauen
 
 o Lizenzcheck
 

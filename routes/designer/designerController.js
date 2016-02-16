@@ -54,6 +54,7 @@ angular.module('designerModule')
                     $scope.$log.log('designerModule      - designerController \n '
                         + '> getAllQuestionsBelongingToFBS().error \n '
                         + '> status: ' + response.status);
+                    alert("Ein Fehler ist aufgetreten. Bitte versuche es erneut");
                 });
             };
 
@@ -74,6 +75,27 @@ angular.module('designerModule')
                     $scope.$log.log('designerModule      - designerController \n '
                         + '> updateQuestion().error \n '
                         + '> status: ' + response.status);
+
+                    if (response.status == -1) // Server not responding
+                    {
+                        alert("NO HTTP RESPONSE.\nDer Server ist nicht erreichbar. Bitte versuche es erneut");
+                    }
+                    else if (response.status == 400) // Server replies BAD REQUEST
+                    {
+                        alert("HTTP 400.\nFehlerhafte Anfrage. Bitte versuche es erneut");
+                        $scope.getAllQuestionsBelongingToFBS();
+                    }
+                    else if (response.status == 404) // Server replies NOT FOUND
+                    {
+                        alert("HTTP 404.\nFehlerhafte Anfrage. Bitte versuche es erneut");
+                        $scope.getAllQuestionsBelongingToFBS();
+                    }
+                    else // Server responding something else
+                    {
+                        alert("HTTP x.\nEin Fehler ist aufgetreten. Bitte versuche es erneut");
+                        $scope.getAllQuestionsBelongingToFBS();
+                    };
+
                 });
             };
 
@@ -119,19 +141,67 @@ angular.module('designerModule')
                                         
                     if (response.status == -1) // Server not responding
                     {
-                        alert("HTTP -1.\nDer Server ist nicht erreichbar. Bitte versuche es nocheinmal");
+                        alert("NO HTTP RESPONSE.\nDer Server ist nicht erreichbar. Bitte versuche es erneut");
                     }
                     else if (response.status == 400) // Server replies BAD REQUEST
                     {
-                        alert("HTTP 400.\nDie Frage konnte nicht angelegt werden. Bitte versuche es nocheinmal");
+                        alert("HTTP 400.\nFehlerhafte Anfrage. Bitte versuche es erneut");
+                        $scope.getAllQuestionsBelongingToFBS();
+                    }
+                    else if (response.status == 404) // Server replies NOT FOUND
+                    {
+                        alert("HTTP 404.\nFehlerhafte Anfrage. Bitte versuche es erneut");
                         $scope.getAllQuestionsBelongingToFBS();
                     }
                     else // Server responding something else
                     {
-                        alert("HTTP x.\nEin Fehler ist aufgetreten. Bitte versuche es nocheinmal");
+                        alert("HTTP x.\nEin Fehler ist aufgetreten. Bitte versuche es erneut");
                         $scope.getAllQuestionsBelongingToFBS();
                     };
                     
+                });
+            };
+
+            // DELETE one Question
+            $scope.deleteQuestion = function (QUE_id_of_question_to_delete) {
+                // Delete Elemtent from ClientQuestionsArray
+                $scope.ClientQuestionsArray.splice($scope.idToIndexLookupArray.indexOf(QUE_id_of_question_to_delete), 1);
+
+
+                $http({
+                    method: 'DELETE',
+                    url: 'http://localhost:54599/api/Feedbackquestions/' + QUE_id_of_question_to_delete,
+                    headers: { 'Authorization': 'Bearer ' + $rootScope.oauth.access_token }
+                }).then(function successCallback(response) {
+                    $scope.$log.log('designerModule      - designerController \n '
+                        + '> deleteQuestion().success \n '
+                        + '> status: ' + response.status
+                        + '> QUE_id: ' + response.data.QUE_id);
+                }, function errorCallback(response) {
+                    $scope.$log.log('designerModule      - designerController \n '
+                        + '> deleteQuestion().error \n '
+                        + '> status: ' + response.status);
+
+                    if (response.status == -1) // Server not responding
+                    {
+                        alert("NO HTTP RESPONSE.\nDer Server ist nicht erreichbar. Bitte versuche es erneut");
+                    }
+                    else if (response.status == 400) // Server replies BAD REQUEST
+                    {
+                        alert("HTTP 400.\nFehlerhafte Anfrage. Bitte versuche es erneut");
+                        $scope.getAllQuestionsBelongingToFBS();
+                    }
+                    else if (response.status == 404) // Server replies NOT FOUND
+                    {
+                        alert("HTTP 404.\nFehlerhafte Anfrage. Bitte versuche es erneut");
+                        $scope.getAllQuestionsBelongingToFBS();
+                    }
+                    else // Server responding something else
+                    {
+                        alert("HTTP x.\nEin Fehler ist aufgetreten. Bitte versuche es erneut");
+                        $scope.getAllQuestionsBelongingToFBS();
+                    };
+
                 });
             };
           
