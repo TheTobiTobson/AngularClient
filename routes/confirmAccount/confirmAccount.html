@@ -1,0 +1,14 @@
+﻿<div ng-switch="confirmationResult">
+    <div ng-switch-when="SUCCESS">
+        <h1>Account Bestätigt!</h1>
+        <p>Herzlichen Glückwunsch. Dein Account wurde erfolgreich bestätigt.</p>
+        <p><a href="#/startpage">Los gehts</a></p>
+    </div>
+    <div ng-switch-when="ERROR">
+        <h1>Fehlgeschlagen</h1>
+        <p>Sorry. Die Bestätigung des Account ist fehlgeschlagen. Lasse dir den Bestätigungslink erneut zuschicken</p>        
+    </div>
+    <div ng-switch-default>
+        <h1>Fehler in Serverantwort</h1>        
+    </div>
+</div>

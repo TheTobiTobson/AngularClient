@@ -4,6 +4,7 @@
 angular.module('startpageModule', []);
 angular.module('aboutModule', []);
 angular.module('designerModule', []);
+angular.module('confirmAccountModule', []);
 
 angular.module('feedMeMainApp', [
     'ngRoute',
@@ -11,6 +12,7 @@ angular.module('feedMeMainApp', [
     'ngMessages',
     'startpageModule',
     'aboutModule',
+    'confirmAccountModule',
     'designerModule'
 ])
 
@@ -25,6 +27,11 @@ angular.module('feedMeMainApp', [
         .when('/about', {
             controller: 'aboutController',
             templateUrl: 'routes/about/about.html'
+        })
+
+        .when('/confirmaccount/:confirmationResult', {
+            controller: 'confirmAccountController',
+            templateUrl: 'routes/confirmAccount/confirmAccount.html'
         })
 
         .when('/designer', {

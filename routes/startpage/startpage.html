@@ -3,13 +3,14 @@
     <p>Welcome to the startpage</p>
     <p><a href="#/about">about</a></p>
     <p><a href="#/designer">designer</a></p>
-
+    <p><a href="#/confirmaccount/KommeVonDerStartseite">confirmaccount</a></p>
+    
+    <!--Login-->
     <h2>Login</h2>
     <md-input-container>
         <label>Email</label>
         <input type="email" ng-model="loginCredentials.username" required>
     </md-input-container>    
-
     <md-input-container>
         <label>Password</label>
         <input type="password" ng-model="loginCredentials.password" required md-maxlength="10">
@@ -20,16 +21,21 @@
     <div>STATUS:{{httpheaders.status}}</div>
     <div>TEXT  :{{httpheaders.statusText}}</div>
 
+    <!--Register-->
     <h2>Registrieren</h2>
     <md-input-container>
         <label>Email</label>
-        <input type="email" ng-model="email_register" required>
+        <input type="email" ng-model="registerCredentials.Email" required>
     </md-input-container>
-
     <md-input-container>
         <label>Password</label>
-        <input type="password" ng-model="password_register" required md-maxlength="10"> 
+        <input type="password" ng-model="registerCredentials.Password" required md-maxlength="100" minlength="6"> 
     </md-input-container>
+    <md-input-container>
+        <label>Confirm Password</label>
+        <input type="password" ng-model="registerCredentials.ConfirmPassword" required md-maxlength="100" minlength="6">
+    </md-input-container>
+    <md-button class="md-raised" ng-click="sendRegisterData()">Register</md-button>
 
     <h2>API calls</h2>
     <md-button class="md-raised" ng-click="getOneQuestionProtected()">CallProtectedAPI</md-button>

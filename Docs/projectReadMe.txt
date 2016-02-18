@@ -27,8 +27,10 @@ o Demoapplikation Autorisierungsfunktionen/FBS und QUE lesen und schreiben > DON
 
 o Seiten aufbauen
 
-oo designer
+oo Allgemein
+ooo Abgleich zwischen Models im Server und Eingabefelder in Angular abgleichen
 
+oo Designer
 ooo Trigger für autosave in Client einbauen
 
 o Lizenzcheck

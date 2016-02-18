@@ -41,7 +41,7 @@ angular.module('startpageModule')
 
             // Fill correct data to loginform
             $scope.setRightCredentials = function () {
-                $scope.loginCredentials.username = "SimonIs@Trooper.com";
+                $scope.loginCredentials.username = "tobi@TheRealUser.com";
                 $scope.loginCredentials.password = "Password!1";
             }
                        
@@ -94,7 +94,7 @@ angular.module('startpageModule')
                 });
             };                      
 
-            // POST Credentials
+            // POST Credentials for Login
             $scope.sendCredentials = function () {
                 $http({
                     method: 'POST',
@@ -131,6 +131,22 @@ angular.module('startpageModule')
                 });
             };
 
+            // POST credentials to register user
+            $scope.sendRegisterData = function () {
+                $http({
+                    method: 'POST',
+                    url: 'http://localhost:54599/api/Account/Register',
+                    data: $scope.registerCredentials
+                }).then(function successCallback(response) {
+                    $scope.$log.log('startpageModule      - startpageController \n '
+                        + '> sendRegisterData().success \n '
+                        + '> status: ' + response.status);                 
+                }, function errorCallback(response) {
+                    $scope.$log.log('startpageModule      - startpageController \n '
+                        + '> sendRegisterData().error \n '
+                        + '> status: ' + response.status);              
+                });
+            };
         }
     ]);
 
