@@ -17,7 +17,7 @@ angular.module('feedMeMainApp', [
 ])
 
 
-.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {    
+.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
     $routeProvider
         .when('/startpage', {
             controller: 'startpageController',
@@ -41,8 +41,8 @@ angular.module('feedMeMainApp', [
 
         .otherwise({ redirectTo: '/startpage' });
 
-        //Enable cross domain calls
-        //$httpProvider.defaults.useXDomain = true;
+    //Enable cross domain calls
+    //$httpProvider.defaults.useXDomain = true;
 }])
 
 
@@ -57,15 +57,30 @@ angular.module('feedMeMainApp', [
         $rootScope.oauth = {
         };
 
-      
+
     }])
 
 
-.directive('helloWorld', function () {        
+.directive('helloWorld', function () {
     return {
-            restrict: 'E',
-            replace: 'true',
-            templateUrl: 'questions.html'
-          //  template: '<h3>{{item.Titel}}lolololo</h3>'
-        };
-    });
+        restrict: 'E',
+        replace: 'true',
+        templateUrl: 'questions.html'
+        //  template: '<h3>{{item.Titel}}lolololo</h3>'
+    };
+})
+
+.directive('pageheader', function () {
+    return {
+        restrict: 'A', 
+        replace: true,
+        scope: { page: '=' },
+        templateUrl: "directives/pageHeader/pageHeader.html",
+        controller: ['$scope', '$filter', function ($scope, $filter) {
+            // Your behaviour goes here :)
+        }]
+    };
+})
+
+
+

@@ -11,6 +11,10 @@ angular.module('startpageModule')
             $scope.vari = "ICH BIN STARTPAGE";
 
             /**** Data ****/
+            // Header Variables
+            $scope.startpage = {};
+            $scope.startpage.pagename = "Startpage";
+
             // Question Data
             $scope.Question = [
                {

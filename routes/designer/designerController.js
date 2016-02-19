@@ -9,6 +9,10 @@ angular.module('designerModule')
             $scope.$log.log('designerModule       - designerController   - .controller          - Entered');
 
             /**** Data ****/
+            // Header Variables
+            $scope.designer = {};
+            $scope.designer.pagename = "Designer";
+
             // Question Data
             //$scope.Question = {};
             $scope.idToIndexLookupArray = [];
