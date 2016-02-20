@@ -1,0 +1,48 @@
+﻿@color_flexbox_green: #009688;
+@color_flexbox_blue: #3949ab;
+@color_flexbox_red: #ba2525;
+
+.borderBlack{
+    border:1px solid black;
+}
+
+/*------------------------------ All pages ------------------------------*/
+/*div size and position for all pagecontent*/
+.pagediv{
+    max-width:1500px; 
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+/* -----------------------------------------------------------------------/
+/* 1 about */
+
+/* 1.1 container for flexboxtest on about page */
+.flexboxtest{
+    max-width:1000px; 
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+/* 1.2 The individual flexboxes */
+.flexbox_parent{    
+    color: white;
+    height: 5em;
+    text-align: center;
+    padding-top: 2em;
+}
+
+.boxcolor_green{
+    .flexbox_parent;
+    background-color: @color_flexbox_green;    
+}
+
+.boxcolor_blue{
+    .flexbox_parent;
+    background-color: @color_flexbox_blue;
+}
+
+.boxcolor_red{
+    .flexbox_parent;
+    background-color: @color_flexbox_red;
+}

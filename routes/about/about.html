@@ -1,7 +1,43 @@
-﻿<h1>about</h1>
-<p>Welcome to the About page</p>
-<p><a href="#/startpage">startpage</a></p>
-<p><a href="#/designer">designer</a></p>
+﻿<div pageheader page="about"></div>
+<div class="pagediv">
+    <h1>about</h1>
+    <p>Welcome to the About page</p>
+    <p><a href="#/startpage">startpage</a></p>
+    <p><a href="#/designer">designer</a></p>
 
-Hallo. Das ist die About page!
+    <p>Material Testgelände</p>
+
+    <!-- Flexbox Test -->
+    <div class="flexboxtest">
+        <div layout="row">
+            <div flex class="boxcolor_green">First item in row</div>
+            <div flex class="boxcolor_blue">Second item in row</div>
+            <div flex class="boxcolor_red">Third item in row</div>
+        </div>
+        <div layout="column">
+            <div flex class="boxcolor_green">First item in column</div>
+            <div flex class="boxcolor_blue">Second item in column</div>
+        </div>
+    </div>
+
+    <!-- Side Navigation -->
+    <div layout="row">
+        <md-sidenav md-component-id="leftSideNavBar" md-is-locked-open="$mdMedia('min-width: 1000px')" class="md-sidenav-left">
+            <form>
+                <md-input-container>
+                    <label for="testInput">Test input</label>
+                    <input id="testInput" type="text" ng-model="data" md-autofocus>
+                    <div class="boxcolor_green">First item in column</div>
+                </md-input-container>
+            </form>
+        </md-sidenav>
+        <md-content>
+            Center Content
+            <md-button ng-click="openLeftMenu()">
+                Open Left Menu
+            </md-button>
+        </md-content>        
+    </div>
+</div>
+
 

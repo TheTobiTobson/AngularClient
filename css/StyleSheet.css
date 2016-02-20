@@ -1,0 +1,46 @@
+.borderBlack {
+  border: 1px solid black;
+}
+/*------------------------------ All pages ------------------------------*/
+/*div size and position for all pagecontent*/
+.pagediv {
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* -----------------------------------------------------------------------/
+/* 1 about */
+/* 1.1 container for flexboxtest on about page */
+.flexboxtest {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* 1.2 The individual flexboxes */
+.flexbox_parent {
+  color: white;
+  height: 5em;
+  text-align: center;
+  padding-top: 2em;
+}
+.boxcolor_green {
+  color: white;
+  height: 5em;
+  text-align: center;
+  padding-top: 2em;
+  background-color: #009688;
+}
+.boxcolor_blue {
+  color: white;
+  height: 5em;
+  text-align: center;
+  padding-top: 2em;
+  background-color: #3949ab;
+}
+.boxcolor_red {
+  color: white;
+  height: 5em;
+  text-align: center;
+  padding-top: 2em;
+  background-color: #ba2525;
+}
