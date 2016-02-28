@@ -13,15 +13,8 @@ angular.module('aboutModule')
             $scope.about.pagename = "About";
 
             //Open NavBar
-            $scope.openLeftMenu = function () {
+            $scope.toggleLeftMenu = function () {
                 $mdSidenav('leftSideNavBar').toggle();
-            };
-
-            $scope.$watch(function () { return $mdMedia('lg'); }, function (big) {
-                $scope.AAAbigScreen = big;
-            });
-            $scope.AAAscreenIsSmall = $mdMedia('sm');
-            $scope.AAAcustomQuery = $mdMedia('(min-width: 1234px)');
-            $scope.AAAanotherCustom = $mdMedia('max-width: 300px');
+            };    
 }]);
 

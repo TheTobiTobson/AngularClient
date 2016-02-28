@@ -45,7 +45,7 @@ angular.module('designerModule')
             $scope.getAllQuestionsBelongingToFBS = function () {
                 $http({
                     method: 'GET',
-                    url: 'http://localhost:54599/api/Feedbackquestions/1',
+                    url: 'http://localhost:54599/api/Feedbackquestions/3',
                     headers: { 'Authorization': 'Bearer ' + $rootScope.oauth.access_token }
                 }).then(function successCallback(response) {
                     $scope.$log.log('designerModule      - designerController \n '
@@ -58,7 +58,23 @@ angular.module('designerModule')
                     $scope.$log.log('designerModule      - designerController \n '
                         + '> getAllQuestionsBelongingToFBS().error \n '
                         + '> status: ' + response.status);
-                    alert("Ein Fehler ist aufgetreten. Bitte versuche es erneut");
+
+                    if (response.status == -1) // Server not responding
+                    {
+                        alert("NO HTTP RESPONSE.\nDer Server ist nicht erreichbar. Bitte versuche es erneut");
+                    }
+                    else if (response.status == 400) // Server replies BAD REQUEST
+                    {
+                        alert("HTTP 400.\nFehlerhafte Anfrage. Bitte versuche es erneut");
+                    }
+                    else if (response.status == 404) // Server replies NOT FOUND
+                    {
+                        alert("HTTP 404.\n Die Angefragte Feedbacksession konnte nicht gefunden werden.");
+                    }
+                    else // Server responding something else
+                    {
+                        alert("HTTP x.\nEin Fehler ist aufgetreten. Bitte versuche es erneut");
+                    };
                 });
             };
 
@@ -115,7 +131,7 @@ angular.module('designerModule')
                     QUE_type: 'Freitext',
                     QUE_showQuestionInFeedback: false,
                     QUE_creationDate: -1,
-                    QUE_FBS_id: 1,
+                    QUE_FBS_id: 3,
                     FBS_FeedbackSession: 0
                 };
 

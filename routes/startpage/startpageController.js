@@ -45,7 +45,7 @@ angular.module('startpageModule')
 
             // Fill correct data to loginform
             $scope.setRightCredentials = function () {
-                $scope.loginCredentials.username = "tobi@TheRealUser.com";
+                $scope.loginCredentials.username = "tobiIsToll@tobimail.com";
                 $scope.loginCredentials.password = "Password!1";
             }
                        
