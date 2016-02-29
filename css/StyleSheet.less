@@ -2,18 +2,43 @@
 @color_flexbox_blue: #3949ab;
 @color_flexbox_red: #ba2525;
 
+/*------------------------------ All pages ------------------------------*/
+/*Black Border form testing purpose*/
 .borderBlack{
     border:1px solid black;
 }
 
-/*------------------------------ All pages ------------------------------*/
+
+/*use complete screen size e.g. sidenav*/
+.ng-scope{
+    height: 100%;
+}
+
 /*div size and position for all pagecontent*/
 .pagediv{
     max-width:1500px; 
-    /*margin-left: auto; 
-    margin-right: auto;*/
 }
 
 /* -----------------------------------------------------------------------/
 /* 1 about */
-/* 1.1 container for flexboxtest on about page */
+/* 1.1 SideNav - horizontal size off sideNav */
+.md-sidenav-left{
+    width:200px;
+}
+
+/* 1.1.1 Button - changes button in sideNav*/ 
+.aboutSidenavButton.md-button{
+    margin: 0px;
+    padding: 21px 6px;
+}
+
+/* 1.1.2 Select - changes select in sideNav*/ 
+.aboutSidenavSelect{
+    margin: 0px;
+    padding: 26px 6px 0px 6px;
+}
+
+/* 1.1.3 DropDown List - size of elements in list*/ 
+.aboutSidenavDropDownList{
+    height: 48px;
+}

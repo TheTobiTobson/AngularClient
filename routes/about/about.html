@@ -1,30 +1,91 @@
 ﻿<div pageheader page="about"></div>
 <div class="pagediv" layout="row">  
     <!-- Side Navigation -->
-    <md-sidenav flex="20" class="md-sidenav-left md-whiteframe-z2" md-component-id="leftSideNavBar" md-is-locked-open="$mdMedia('gt-md')">
-        <md-toolbar class="md-theme-indigo">
-            <h1 class="md-toolbar-tools">Sidenav Left</h1>
-        </md-toolbar>
-        <md-button class="md-primary" ng-href="#/startpage" target="_blank">Primary Link</md-button>
+    <md-sidenav flex="none" layout="column" class="md-sidenav-left md-whiteframe-z1" md-component-id="leftSideNavBar" md-is-locked-open="$mdMedia('gt-sm')">       
+        <!--Select DropDown-->
+        <div flex="none" layout="column" layout-align="center" class="aboutSidenavSelect">
+            <md-input-container>
+                <label>Select FBS</label>
+                <md-select ng-model="topping">
+                    <md-optgroup label="Meats">
+                        <md-option class="aboutSidenavDropDownList" ng-value="topping.name" ng-repeat="topping in toppings | filter: {category: 'meat' }">{{topping.name}}</md-option>
+                    </md-optgroup>
+                    <md-optgroup label="Veggies">
+                        <md-option ng-value="topping.name" ng-repeat="topping in toppings | filter: {category: 'veg' }">{{topping.name}}</md-option>
+                    </md-optgroup>
+                </md-select>
+            </md-input-container>
+        </div>  
+        <!--Button 1-->   
+        <div flex="none" layout="column" layout-align="center">
+            <md-button class="md-primary aboutSidenavButton" ng-click="changeContent(1)">Examine answers</md-button>
+        </div>
+        <!--Button 2-->   
+        <div flex="none" layout="column" layout-align="center">
+            <md-button class="md-primary aboutSidenavButton" ng-click="changeContent(2)">Change questions</md-button>
+        </div>
+        <!--Button 3-->   
+        <div flex="none" layout="column" layout-align="center">
+            <md-button class="md-primary aboutSidenavButton" ng-click="changeContent(3)">View statistics</md-button>
+        </div>
     </md-sidenav>
 
     <!--Center Content-->
-    <md-content flex="80" layout-padding>        
-            <div>
-                This is a lot of text! This is a lot of text! This is a lot of text!
-                This is a lot of text! This is a lot of text! This is a lot of text!
-                This is a lot of text! This is a lot of text! This is a lot of text!
-                This is a lot of text! This is a lot of text! This is a lot of text!
-                This is a lot of text! This is a lot of text! This is a lot of text!
-                This is a lot of text! This is a lot of text! This is a lot of text!
-                This is a lot of text! This is a lot of text! This is a lot of text!
-                This is a lot of text! This is a lot of text! This is a lot of text!
-                This is a lot of text! This is a lot of text! This is a lot of text!
-                This is a lot of text! This is a lot of text! This is a lot of text!
-                This is a lot of text! This is a lot of text! This is a lot of text!
-                This is a lot of text! This is a lot of text! This is a lot of text!
+    <md-content flex="85" layout-padding class="md-whiteframe-z1">        
+            <div> 
+                <div ng-switch="contentControl">
+                    <div ng-switch-when=1>
+                        <h1>Inhalte 1</h1>
+                        <h2>Alles was hier steht gehört zu Inhalt 1</h2>
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText! 
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!                       
+                    </div>
+                    <div ng-switch-when=2>
+                        <h1>Inhalte 2</h1>
+                        <h2>Alles was hier steht gehört zu Inhalt 2</h2>
+                    </div>
+                    <div ng-switch-when=3>
+                        <h1>Inhalte 3</h1>
+                        <h2>Alles was hier steht gehört zu Inhalt 3</h2>
+                    </div>                    
+                    <div ng-switch-default>
+                        <h1>DEFAULT</h1>
+                        <p>HERE IS NOTHING TO SHOW</p>
+                    </div>
+                </div>
             </div>                    
     </md-content>
 </div>
 
 
+
+    
+            
+           
+    
+       
