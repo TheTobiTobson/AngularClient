@@ -6,12 +6,12 @@
         <div flex="none" layout="column" layout-align="center" class="aboutSidenavSelect">
             <md-input-container>
                 <label>Select FBS</label>
-                <md-select ng-model="topping">
-                    <md-optgroup label="Meats">
-                        <md-option class="aboutSidenavDropDownList" ng-value="topping.name" ng-repeat="topping in toppings | filter: {category: 'meat' }">{{topping.name}}</md-option>
+                <md-select ng-model="selectedFBS">
+                    <md-optgroup label="FBS Category 1">
+                        <md-option class="aboutSidenavDropDownList" ng-value="CurrentFBS.FBS_id" ng-repeat="CurrentFBS in ClientFBSArray | filter: {FBS_creationDate: 123 }">{{CurrentFBS.FBS_name}}</md-option>
                     </md-optgroup>
-                    <md-optgroup label="Veggies">
-                        <md-option ng-value="topping.name" ng-repeat="topping in toppings | filter: {category: 'veg' }">{{topping.name}}</md-option>
+                    <md-optgroup label="FBS Category 2">
+                        <md-option class="aboutSidenavDropDownList" ng-value="CurrentFBS.FBS_id" ng-repeat="CurrentFBS in ClientFBSArray | filter: {FBS_creationDate: 234 }">{{CurrentFBS.FBS_name}}</md-option>
                     </md-optgroup>
                 </md-select>
             </md-input-container>
@@ -30,7 +30,7 @@
         </div>
         <!--Button 4-->
         <div flex="none" layout="column" layout-align="center">
-            <md-button class="md-primary md-hue-2 aboutSidenavButton" ng-click="changeContent(4)">Overview</md-button>
+            <md-button class="md-primary md-hue-2 aboutSidenavButton" ng-click="changeContent(4);getAllFBSBelongingToThisUser()">Create new FBS</md-button>
         </div>
     </md-sidenav>
 
@@ -65,7 +65,7 @@
                     </div>   
                     <div ng-switch-when=4>
                         <h1>Inhalte 4</h1>
-                        <h2>Alles was hier steht gehört zu Inhalt 4</h2>
+                        FBS_id
                     </div>                 
                     <div ng-switch-default>
                         <h1>DEFAULT</h1>

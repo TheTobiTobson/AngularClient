@@ -4,8 +4,8 @@
 angular.module('aboutModule')
 
 .controller('aboutController',
-    ['$scope','$mdSidenav','$mdMedia',
-        function ($scope, $mdSidenav, $mdMedia) {
+    ['$rootScope', '$scope', '$mdSidenav', '$mdMedia', '$http',
+        function ($rootScope, $scope, $mdSidenav, $mdMedia, $http) {
             $scope.$log.log('aboutModule          - aboutController      - .controller          - Entered');
 
             // content Controll
@@ -36,5 +36,36 @@ angular.module('aboutModule')
                 { category: 'veg', name: 'Green Pepper' },
                 { category: 'veg', name: 'Green Olives' }
             ];
+
+
+         
+            //--------------------------------- Send and Receive ---------------------------------//
+            // GET all FBS belonging to this user
+            $scope.getAllFBSBelongingToThisUser = function () {
+                $http({
+                    method: 'GET',
+                    url: 'http://localhost:54599/api/Feedbacksession',
+                    headers: { 'Authorization': 'Bearer ' + $rootScope.oauth.access_token }
+                }).then(function successCallback(response) {
+                    $scope.$log.log('aboutModule         - aboutController \n '
+                        + '> getAllFBSBelongingToThisUser().success \n '
+                        + '> status: ' + response.status);
+                    //Write Response to Scope//
+                    $scope.ClientFBSArray = response.data;
+                }, function errorCallback(response) {
+                    $scope.$log.log('aboutModule         - aboutController \n '
+                        + '> getAllFBSBelongingToThisUser().error \n '
+                        + '> status: ' + response.status);
+
+                    if (response.status == -1) // Server not responding
+                    {
+                        alert("NO HTTP RESPONSE.\nDer Server ist nicht erreichbar. Bitte versuche es erneut");
+                    }                    
+                    else // Server responding something else
+                    {
+                        alert("HTTP x.\nEin Fehler ist aufgetreten. Bitte versuche es erneut");
+                    };
+                });
+            };            
 }]);
 
