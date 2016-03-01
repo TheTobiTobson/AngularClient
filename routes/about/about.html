@@ -18,15 +18,19 @@
         </div>  
         <!--Button 1-->   
         <div flex="none" layout="column" layout-align="center">
-            <md-button class="md-primary aboutSidenavButton" ng-click="changeContent(1)">Examine answers</md-button>
+            <md-button class="md-primary md-hue-2 aboutSidenavButton" ng-click="changeContent(1)">Examine answers</md-button>
         </div>
         <!--Button 2-->   
         <div flex="none" layout="column" layout-align="center">
-            <md-button class="md-primary aboutSidenavButton" ng-click="changeContent(2)">Change questions</md-button>
+            <md-button class="md-primary md-hue-2 aboutSidenavButton" ng-click="changeContent(2)">Change questions</md-button>
         </div>
         <!--Button 3-->   
         <div flex="none" layout="column" layout-align="center">
-            <md-button class="md-primary aboutSidenavButton" ng-click="changeContent(3)">View statistics</md-button>
+            <md-button class="md-primary md-hue-2 aboutSidenavButton" ng-click="changeContent(3)">View statistics</md-button>
+        </div>
+        <!--Button 4-->
+        <div flex="none" layout="column" layout-align="center">
+            <md-button class="md-primary md-hue-2 aboutSidenavButton" ng-click="changeContent(4)">Overview</md-button>
         </div>
     </md-sidenav>
 
@@ -39,21 +43,7 @@
                         <h2>Alles was hier steht gehört zu Inhalt 1</h2>
                         AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText! 
                         AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
-                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
-                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
-                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
-                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
-                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
-                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
-                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
-                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
-                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
-                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
-                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
-                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
-                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
-                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
-                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
+                        AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!                      
                         AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
                         AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
                         AllesVollerText! AllesVollerText! AllesVollerText! AllesVollerText!
@@ -72,7 +62,11 @@
                     <div ng-switch-when=3>
                         <h1>Inhalte 3</h1>
                         <h2>Alles was hier steht gehört zu Inhalt 3</h2>
-                    </div>                    
+                    </div>   
+                    <div ng-switch-when=4>
+                        <h1>Inhalte 4</h1>
+                        <h2>Alles was hier steht gehört zu Inhalt 4</h2>
+                    </div>                 
                     <div ng-switch-default>
                         <h1>DEFAULT</h1>
                         <p>HERE IS NOTHING TO SHOW</p>
